@@ -115,14 +115,18 @@
       width: 32px;
       height: 32px;
       border-radius: 12px;
-      background: radial-gradient(circle at 20% 20%, #ffffff, #1b3c73);
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #ffffff;
-      font-weight: 700;
-      font-size: 14px;
       box-shadow: 0 10px 25px rgba(15, 23, 42, 0.35);
+      overflow: hidden;
+    }
+
+    .logo-mark img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
     }
 
     .logo-text {
@@ -406,10 +410,12 @@
       <header>
         <div class="logo-row">
           <div class="logo">
-            <div class="logo-mark">N</div>
+            <div class="logo-mark">
+              <img src="newslingo-logo.png" alt="NewsLingo logo" />
+            </div>
             <div class="logo-text">NewsLingo</div>
           </div>
-          <span class="beta-pill">현재 무료</span>
+          <span class="beta-pill">무료</span>
         </div>
         <h1>AI가 큐레이션한 뉴스로 영어 단어를 배워보세요.</h1>
         <p class="hero-subtitle">

@@ -376,6 +376,12 @@
       margin-top: 12px;
     }
 
+    .updates-footer {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 12px;
+    }
+
     .update-item {
       border-radius: 14px;
       border: 1px solid rgba(148, 163, 184, 0.4);
@@ -647,9 +653,11 @@
             서비스의 최신 개선 사항을 한눈에 확인하세요.
           </p>
           <div id="updates-preview" class="updates-list" aria-live="polite"></div>
-          <a href="updates.html" class="btn-secondary" aria-label="See more updates">
-            See more
-          </a>
+          <div class="updates-footer">
+            <a href="updates.html" class="btn-secondary" aria-label="See more updates">
+              See more
+            </a>
+          </div>
         </section>
       </main>
     </div>

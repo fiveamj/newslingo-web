@@ -16,61 +16,11 @@
     href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
     rel="stylesheet"
   />
+  <link rel="stylesheet" href="shared.css" />
 
   <style>
     :root {
-      --color-bg: #f9fafb;
-      --color-primary: #1b3c73;
-      --color-accent: #4e9f3d;
-      --color-text: #111827;
-      --color-muted: #6b7280;
-      --radius-lg: 16px;
-      --shadow-soft: 0 14px 30px rgba(15, 23, 42, 0.12);
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-      background: radial-gradient(circle at top left, #e5f0ff, #f9fafb 55%);
-      color: var(--color-text);
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-      padding-bottom: 90px;
-    }
-
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    .page-wrapper {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 32px 16px 40px;
-    }
-
-    .card {
-      width: 100%;
-      max-width: 720px;
-      background: #ffffff;
-      border-radius: 24px;
-      box-shadow: var(--shadow-soft);
-      padding: 32px 20px 24px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    @media (min-width: 640px) {
-      .card {
-        padding: 40px 40px 28px;
-      }
+      --page-bottom-padding: 90px;
     }
 
     .badge {
@@ -96,59 +46,6 @@
 
     header {
       margin-bottom: 28px;
-    }
-
-    .logo-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 16px;
-      gap: 8px;
-    }
-
-    .logo {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .logo-mark {
-      width: 32px;
-      height: 32px;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.35);
-      overflow: hidden;
-    }
-
-    .logo-mark img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      display: block;
-    }
-
-    .logo-text {
-      font-weight: 600;
-      font-size: 18px;
-      letter-spacing: 0.02em;
-      color: var(--color-primary);
-    }
-
-    h1 {
-      font-size: 26px;
-      line-height: 1.15;
-      letter-spacing: -0.03em;
-      margin-bottom: 12px;
-      color: #0f172a;
-    }
-
-    @media (min-width: 640px) {
-      h1 {
-        font-size: 32px;
-      }
     }
 
     .hero-subtitle {
@@ -407,42 +304,6 @@
     .update-summary {
       font-size: 12px;
       color: var(--color-muted);
-    }
-
-    .updates-empty {
-      font-size: 13px;
-      color: var(--color-muted);
-      border: 1px dashed rgba(148, 163, 184, 0.5);
-      border-radius: 12px;
-      padding: 12px;
-      text-align: center;
-      background: rgba(27, 60, 115, 0.03);
-    }
-
-    footer {
-      width: 100%;
-      max-width: 720px;
-      margin-top: 14px;
-      font-size: 11px;
-      color: var(--color-muted);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .footer-right {
-      text-align: right;
-    }
-
-    @media (max-width: 480px) {
-      footer {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      .footer-right {
-        text-align: left;
-      }
     }
 
     .link-muted {

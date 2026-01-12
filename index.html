@@ -101,7 +101,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 8px;
+      margin-bottom: 16px;
       gap: 8px;
     }
 
@@ -330,6 +330,89 @@
       color: var(--color-primary);
     }
 
+    .updates-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .updates-title-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--color-primary);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(27, 60, 115, 0.25);
+      background: #ffffff;
+      color: var(--color-primary);
+      font-weight: 600;
+      font-size: 12px;
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.2s ease;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .btn-secondary:hover {
+      transform: translateY(-1px);
+      border-color: rgba(27, 60, 115, 0.45);
+      box-shadow: 0 10px 20px rgba(15, 23, 42, 0.12);
+    }
+
+    .updates-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .update-item {
+      border-radius: 14px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      padding: 12px 12px 10px;
+      background: #ffffff;
+    }
+
+    .update-meta {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--color-muted);
+      margin-bottom: 6px;
+    }
+
+    .update-headline {
+      font-size: 14px;
+      font-weight: 600;
+      color: #0f172a;
+      margin-bottom: 4px;
+    }
+
+    .update-summary {
+      font-size: 12px;
+      color: var(--color-muted);
+    }
+
+    .updates-empty {
+      font-size: 13px;
+      color: var(--color-muted);
+      border: 1px dashed rgba(148, 163, 184, 0.5);
+      border-radius: 12px;
+      padding: 12px;
+      text-align: center;
+      background: rgba(27, 60, 115, 0.03);
+    }
+
     footer {
       width: 100%;
       max-width: 720px;
@@ -556,6 +639,25 @@
             </ul>
           </div>
         </section>
+
+        <!-- Latest updates -->
+        <section aria-labelledby="section-updates">
+          <div class="updates-header">
+            <h2 id="section-updates" class="section-title">
+              <a href="updates.html" class="updates-title-link" aria-label="Go to updates">
+                Latest Updates
+                <span aria-hidden="true">↗</span>
+              </a>
+            </h2>
+            <a href="updates.html" class="btn-secondary" aria-label="See more updates">
+              See more
+            </a>
+          </div>
+          <p class="section-body muted">
+            서비스의 최신 개선 사항을 한눈에 확인하세요.
+          </p>
+          <div id="updates-preview" class="updates-list" aria-live="polite"></div>
+        </section>
       </main>
     </div>
 
@@ -597,6 +699,48 @@
         });
       }
     });
+
+    function renderUpdatesPreview(items) {
+      var container = document.getElementById("updates-preview");
+      if (!container) {
+        return;
+      }
+
+      if (!items || !items.length) {
+        container.innerHTML = '<div class="updates-empty">아직 공개된 업데이트가 없습니다.</div>';
+        return;
+      }
+
+      var slice = items.slice(0, 4);
+      container.innerHTML = slice
+        .map(function (item) {
+          return (
+            '<article class="update-item">' +
+              '<div class="update-meta">' +
+                item.date +
+                (item.tag ? " · " + item.tag : "") +
+              '</div>' +
+              '<div class="update-headline">' + item.title + "</div>" +
+              '<div class="update-summary">' + item.summary + "</div>" +
+            "</article>"
+          );
+        })
+        .join("");
+    }
+
+    fetch("updates.json")
+      .then(function (response) {
+        if (!response.ok) {
+          throw new Error("Failed to load updates");
+        }
+        return response.json();
+      })
+      .then(function (data) {
+        renderUpdatesPreview(data);
+      })
+      .catch(function () {
+        renderUpdatesPreview([]);
+      });
   </script>
 </body>
 </html>

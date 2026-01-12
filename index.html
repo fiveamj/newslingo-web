@@ -16,60 +16,11 @@
     href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
     rel="stylesheet"
   />
+  <link rel="stylesheet" href="shared.css" />
 
   <style>
     :root {
-      --color-bg: #f9fafb;
-      --color-primary: #1b3c73;
-      --color-accent: #4e9f3d;
-      --color-text: #111827;
-      --color-muted: #6b7280;
-      --radius-lg: 16px;
-      --shadow-soft: 0 14px 30px rgba(15, 23, 42, 0.12);
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-      background: radial-gradient(circle at top left, #e5f0ff, #f9fafb 55%);
-      color: var(--color-text);
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    .page-wrapper {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 32px 16px 40px;
-    }
-
-    .card {
-      width: 100%;
-      max-width: 720px;
-      background: #ffffff;
-      border-radius: 24px;
-      box-shadow: var(--shadow-soft);
-      padding: 32px 20px 24px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    @media (min-width: 640px) {
-      .card {
-        padding: 40px 40px 28px;
-      }
+      --page-bottom-padding: 90px;
     }
 
     .badge {
@@ -95,59 +46,6 @@
 
     header {
       margin-bottom: 28px;
-    }
-
-    .logo-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 8px;
-      gap: 8px;
-    }
-
-    .logo {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .logo-mark {
-      width: 32px;
-      height: 32px;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.35);
-      overflow: hidden;
-    }
-
-    .logo-mark img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      display: block;
-    }
-
-    .logo-text {
-      font-weight: 600;
-      font-size: 18px;
-      letter-spacing: 0.02em;
-      color: var(--color-primary);
-    }
-
-    h1 {
-      font-size: 26px;
-      line-height: 1.15;
-      letter-spacing: -0.03em;
-      margin-bottom: 12px;
-      color: #0f172a;
-    }
-
-    @media (min-width: 640px) {
-      h1 {
-        font-size: 32px;
-      }
     }
 
     .hero-subtitle {
@@ -288,7 +186,6 @@
     .list {
       list-style: none;
       padding-left: 0;
-      margin-top: 8px;
     }
 
     .list-item {
@@ -330,30 +227,83 @@
       color: var(--color-primary);
     }
 
-    footer {
-      width: 100%;
-      max-width: 720px;
-      margin-top: 14px;
-      font-size: 11px;
-      color: var(--color-muted);
+    .updates-header {
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      gap: 8px;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 10px;
     }
 
-    .footer-right {
-      text-align: right;
+    .updates-title-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--color-primary);
     }
 
-    @media (max-width: 480px) {
-      footer {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      .footer-right {
-        text-align: left;
-      }
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(27, 60, 115, 0.25);
+      background: #ffffff;
+      color: var(--color-primary);
+      font-weight: 600;
+      font-size: 12px;
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.2s ease;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .btn-secondary:hover {
+      transform: translateY(-1px);
+      border-color: rgba(27, 60, 115, 0.45);
+      box-shadow: 0 10px 20px rgba(15, 23, 42, 0.12);
+    }
+
+    .updates-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .updates-footer {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 12px;
+    }
+
+    .update-item {
+      border-radius: 14px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      padding: 12px 12px 10px;
+      background: #ffffff;
+    }
+
+    .update-meta {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--color-muted);
+      margin-bottom: 6px;
+    }
+
+    .update-headline {
+      font-size: 14px;
+      font-weight: 600;
+      color: #0f172a;
+      margin-bottom: 4px;
+    }
+
+    .update-summary {
+      font-size: 12px;
+      color: var(--color-muted);
     }
 
     .link-muted {
@@ -380,7 +330,7 @@
       left: 0px;
       right: 0px;
       bottom: 0px;
-      display: none;
+      display: block;
       z-index: 20;
       background: rgba(255, 255, 255, 0.9);
       border: 1px solid rgba(148, 163, 184, 0.4);
@@ -393,15 +343,6 @@
       width: 100%;
     }
 
-    @media (max-width: 640px) {
-      body {
-        padding-bottom: 90px;
-      }
-
-      .sticky-cta {
-        display: block;
-      }
-    }
   </style>
 </head>
 <body>
@@ -443,13 +384,23 @@
       <main>
         <!-- Service intro -->
         <section aria-labelledby="section-intro">
-          <h2 id="section-intro" class="section-title">NewsLingo란 무엇인가요?</h2>
+          <h2 id="section-intro" class="section-title">🤩 NewsLingo란 무엇인가요?</h2>
           <p class="section-body">
             NewsLingo는 실제 뉴스를 기반으로 한 AI 영어 학습 뉴스레터입니다.
             매일 한 편의 기사를 골라 어휘, 어원, 예문, 학습자 수준에 맞춘 짧은 설명을 담은 컴팩트한 학습 팩을 메일로 제공합니다.
           </p>
 
           <div class="features-grid">
+            <div class="feature-card">
+              <div class="feature-title">
+                <span class="feature-title-icon">N</span>
+                진짜 뉴스
+              </div>
+              <p class="feature-text">
+                인공적인 교재 문장이 아닌, 실제 헤드라인과 이야기를 통해 영어를 배워요.
+              </p>
+            </div>
+
             <div class="feature-card">
               <div class="feature-title">
                 <span class="feature-title-icon">A</span>
@@ -462,17 +413,7 @@
 
             <div class="feature-card">
               <div class="feature-title">
-                <span class="feature-title-icon">📰</span>
-                진짜 뉴스
-              </div>
-              <p class="feature-text">
-                인공적인 교재 문장이 아닌, 실제 헤드라인과 이야기를 통해 영어를 배워요.
-              </p>
-            </div>
-
-            <div class="feature-card">
-              <div class="feature-title">
-                <span class="feature-title-icon">✉︎</span>
+                <span class="feature-title-icon">@</span>
                 이메일, 원하는 주기로
               </div>
               <p class="feature-text">
@@ -482,7 +423,7 @@
 
             <div class="feature-card">
               <div class="feature-title">
-                <span class="feature-title-icon">⚙︎</span>
+                <span class="feature-title-icon">L</span>
                 수준에 맞춘 설명
               </div>
               <p class="feature-text">
@@ -494,7 +435,7 @@
 
         <!-- Benefits -->
         <section aria-labelledby="section-benefits">
-          <h2 id="section-benefits" class="section-title">Why subscribe?</h2>
+          <h2 id="section-benefits" class="section-title">🚀 Why subscribe?</h2>
           <ul class="list">
             <li class="list-item">
               <div class="list-bullet">✓</div>
@@ -531,9 +472,9 @@
 
         <!-- Beta / pricing info -->
         <section aria-labelledby="section-beta">
-          <h2 id="section-beta" class="section-title">Currently in Free Beta — Constantly Improving</h2>
+          <h2 id="section-beta" class="section-title">↗️ Constantly Improving</h2>
           <p class="section-body">
-            NewsLingo는 현재 초기 베타 단계입니다. 따라서:
+            NewsLingo는 꾸준히 서비스를 개선합니다.
           </p>
           <div class="beta-box">
             <ul class="list">
@@ -550,10 +491,24 @@
               <li class="list-item">
                 <div class="list-bullet">★</div>
                 <span>
-                  초기 베타 유저분들의 소중한 의견을 서비스 개선에 적극적으로 반영하겠습니다.
+                  유저분들의 소중한 의견을 서비스 개선에 적극적으로 반영하겠습니다.
                 </span>
               </li>
             </ul>
+          </div>
+        </section>
+
+        <!-- Latest updates -->
+        <section aria-labelledby="section-updates">
+          <h2 id="section-beta" class="section-title">🚅 Latest Updates</h2>
+          <p class="section-body">
+            서비스의 최신 개선 사항을 한눈에 확인하세요.
+          </p>
+          <div id="updates-preview" class="updates-list" aria-live="polite"></div>
+          <div class="updates-footer">
+            <a href="updates.html" class="btn-secondary" aria-label="See more updates">
+              See more
+            </a>
           </div>
         </section>
       </main>
@@ -578,7 +533,7 @@
       rel="noopener noreferrer"
       class="btn-primary"
     >
-      <span>🚀 지금 무료 구독 시작하기</span>
+      <span>😎 오늘부터 영어로 뉴스 읽는 사람 되기</span>
       <span class="icon">↗</span>
     </a>
   </div>
@@ -597,6 +552,48 @@
         });
       }
     });
+
+    function renderUpdatesPreview(items) {
+      var container = document.getElementById("updates-preview");
+      if (!container) {
+        return;
+      }
+
+      if (!items || !items.length) {
+        container.innerHTML = '<div class="updates-empty">아직 공개된 업데이트가 없습니다.</div>';
+        return;
+      }
+
+      var slice = items.slice(0, 4);
+      container.innerHTML = slice
+        .map(function (item) {
+          return (
+            '<article class="update-item">' +
+              '<div class="update-meta">' +
+                item.date +
+                (item.tag ? " · " + item.tag : "") +
+              '</div>' +
+              '<div class="update-headline">' + item.title + "</div>" +
+              '<div class="update-summary">' + item.summary + "</div>" +
+            "</article>"
+          );
+        })
+        .join("");
+    }
+
+    fetch("updates.json")
+      .then(function (response) {
+        if (!response.ok) {
+          throw new Error("Failed to load updates");
+        }
+        return response.json();
+      })
+      .then(function (data) {
+        renderUpdatesPreview(data);
+      })
+      .catch(function () {
+        renderUpdatesPreview([]);
+      });
   </script>
 </body>
 </html>

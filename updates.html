@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>NewsLingo Updates</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="description"
+    content="Latest NewsLingo updates and improvements."
+  />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="shared.css" />
+
+  <style>
+    :root {
+      --card-max-width: 760px;
+      --card-padding: 32px 20px 28px;
+      --card-padding-lg: 40px 44px 32px;
+      --logo-size: 30px;
+      --logo-row-gap: 10px;
+    }
+
+    header {
+      margin-bottom: 24px;
+    }
+
+    .link-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(27, 60, 115, 0.2);
+      background: rgba(27, 60, 115, 0.04);
+      font-size: 12px;
+      color: var(--color-primary);
+      font-weight: 600;
+    }
+
+    h1 {
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      font-size: 14px;
+      color: var(--color-muted);
+      margin-bottom: 18px;
+    }
+
+    .updates-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .update-card {
+      border-radius: 16px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      padding: 16px 16px 14px;
+      background: linear-gradient(135deg, #ffffff, #f8fafc);
+    }
+
+    .update-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 8px;
+    }
+
+    .update-date {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--color-muted);
+      margin-bottom: 4px;
+    }
+
+    .update-title {
+      font-size: 18px;
+      color: #0f172a;
+      font-weight: 600;
+    }
+
+    .update-tag {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(78, 159, 61, 0.1);
+      color: var(--color-accent);
+      border: 1px solid rgba(78, 159, 61, 0.25);
+      font-weight: 600;
+    }
+
+    .update-summary {
+      font-size: 13px;
+      color: var(--color-text);
+      margin-bottom: 10px;
+    }
+
+    .update-details {
+      list-style: none;
+      display: grid;
+      gap: 6px;
+      padding-left: 0;
+      font-size: 12px;
+      color: var(--color-muted);
+    }
+
+    .update-details li {
+      position: relative;
+      padding-left: 16px;
+    }
+
+    .update-details li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--color-accent);
+    }
+
+    .updates-empty {
+      border-radius: 14px;
+      padding: 16px;
+    }
+  </style>
+</head>
+<body>
+  <div class="page-wrapper">
+    <div class="card" id="updates-card">
+      <header>
+        <div class="logo-row">
+          <div class="logo">
+            <div class="logo-mark">
+              <img src="newslingo-logo.png" alt="NewsLingo logo" />
+            </div>
+            <div class="logo-text">NewsLingo</div>
+          </div>
+          <a href="index.html" class="link-pill" aria-label="Back to home">
+            ← Home
+          </a>
+        </div>
+        <h1>Latest Updates</h1>
+        <p class="subtitle">NewsLingo는 여러분의 영어 실력 향상을 위해 꾸준히 발전합니다.</p>
+      </header>
+
+      <main>
+        <div id="updates-list" class="updates-list" aria-live="polite"></div>
+      </main>
+    </div>
+
+    <footer>
+      <div>© 2025 NewsLingo. All rights reserved.</div>
+      <div>Updates are refreshed from updates.json.</div>
+    </footer>
+  </div>
+
+  <script>
+    function renderUpdatesList(items) {
+      var container = document.getElementById("updates-list");
+      if (!container) {
+        return;
+      }
+
+      if (!items || !items.length) {
+        container.innerHTML = '<div class="updates-empty">아직 공개된 업데이트가 없습니다.</div>';
+        return;
+      }
+
+      container.innerHTML = "";
+
+      items.forEach(function (item) {
+        var article = document.createElement("article");
+        article.className = "update-card";
+
+        var top = document.createElement("div");
+        top.className = "update-top";
+
+        var textWrap = document.createElement("div");
+        var date = document.createElement("div");
+        date.className = "update-date";
+        date.textContent = item.date || "";
+
+        var title = document.createElement("h2");
+        title.className = "update-title";
+        title.textContent = item.title || "";
+
+        textWrap.appendChild(date);
+        textWrap.appendChild(title);
+        top.appendChild(textWrap);
+
+        if (item.tag) {
+          var tag = document.createElement("span");
+          tag.className = "update-tag";
+          tag.textContent = item.tag;
+          top.appendChild(tag);
+        }
+
+        article.appendChild(top);
+
+        if (item.summary) {
+          var summary = document.createElement("p");
+          summary.className = "update-summary";
+          summary.textContent = item.summary;
+          article.appendChild(summary);
+        }
+
+        if (item.details && item.details.length) {
+          var list = document.createElement("ul");
+          list.className = "update-details";
+
+          item.details.forEach(function (detail) {
+            var li = document.createElement("li");
+            li.textContent = detail;
+            list.appendChild(li);
+          });
+
+          article.appendChild(list);
+        }
+
+        container.appendChild(article);
+      });
+    }
+
+    fetch("updates.json")
+      .then(function (response) {
+        if (!response.ok) {
+          throw new Error("Failed to load updates");
+        }
+        return response.json();
+      })
+      .then(function (data) {
+        renderUpdatesList(data);
+      })
+      .catch(function () {
+        renderUpdatesList([]);
+      });
+  </script>
+</body>
+</html>
